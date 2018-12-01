@@ -7,6 +7,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.ui.Model;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class WebController {
     private static final String MODEL_SUCCESS = "success";
@@ -20,6 +28,21 @@ public class WebController {
             return "index.html";
         }
         model.addAttribute(MODEL_SUCCESS, "Successful loading of file.");
+        BufferedReader br;
+        List<String> result = new ArrayList<>();
+        try {
+
+            String line;
+            InputStream is = textFile.getInputStream();
+            br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                result.add(line);
+                System.out.println(result);
+            }
+
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
         return "index.html";
     }
 }
