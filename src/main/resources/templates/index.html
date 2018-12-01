@@ -2,18 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="shortcut icon" type="image/png" href="/static/img/favicon-32x32.png"/>
+    <title>Security Innovations</title>
     <link href="/static/css/main.css" rel="stylesheet"/>
     <link href="/static/css/bootstrap.css" rel="stylesheet"/>
     <link href="/static/css/font-awesome.css" rel="stylesheet"/>
 </head>
 <body>
     <div class="container">
+        <h3>Please upload a text document.</h3>
         <form action="/fileUpload" th:action="@{/fileUpload}" method="post" enctype="multipart/form-data">
-            <h4 class="success" ><span th:text="${success}">--success message--</span></h4>
-        <input type="file" name="myFile" />
-        <input type="submit" />
+            <h4 class="success" ><span th:text="${success}"></span></h4>
+            <h4 class="error" ><span th:text="${error}"></span></h4>
+        <input type="file" name="textFile"  />
+        <input type="submit" class="btn-default"/>
         </form>
     </div>
 

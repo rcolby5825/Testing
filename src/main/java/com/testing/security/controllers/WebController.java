@@ -14,7 +14,11 @@ public class WebController {
 
 
     @RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
-    public String importParse(@RequestParam("myFile") MultipartFile myFile, Model model) {
+    public String importParse(@RequestParam("textFile") MultipartFile textFile, Model model) {
+        if(textFile.isEmpty()){
+            model.addAttribute(MODEL_ERROR, "No file was uploaded.");
+            return "index.html";
+        }
         model.addAttribute(MODEL_SUCCESS, "Successful loading of file.");
         return "index.html";
     }
