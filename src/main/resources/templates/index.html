@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -10,10 +10,11 @@
 </head>
 <body>
     <div class="container">
-        <form action="uploadSuccess.html" th:action="@{/fileUpload}" method="post" enctype="multipart/form-data">
+        <form action="/fileUpload" th:action="@{/fileUpload}" method="post" enctype="multipart/form-data">
+            <h4 class="success" ><span th:text="${success}">--success message--</span></h4>
         <input type="file" name="myFile" />
         <input type="submit" />
-    </form>
+        </form>
     </div>
 
 </body>
