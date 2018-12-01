@@ -13,8 +13,12 @@
         <form action="/fileUpload" th:action="@{/fileUpload}" method="post" enctype="multipart/form-data">
             <h4 class="success" ><span th:text="${success}"></span></h4>
             <h4 class="error" ><span th:text="${error}"></span></h4>
-        <input type="file" name="textFile"  />
-        <input type="submit" class="btn-default"/>
+            <div class="row">
+                <input type="file" name="textFile"  />
+            </div>
+            <div class="row">
+                <input type="submit" class="btn-default"/>
+            </div>
         </form>
     </div>
 
