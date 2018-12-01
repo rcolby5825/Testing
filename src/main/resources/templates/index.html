@@ -6,8 +6,15 @@
     <link rel="shortcut icon" type="image/png" href="/static/img/favicon-32x32.png"/>
     <link href="/static/css/main.css" rel="stylesheet"/>
     <link href="/static/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/static/css/font-awesome.css" rel="stylesheet"/>
 </head>
 <body>
+    <div class="container">
+        <form action="uploadSuccess.html" th:action="@{/fileUpload}" method="post" enctype="multipart/form-data">
+        <input type="file" name="myFile" />
+        <input type="submit" />
+    </form>
+    </div>
 
 </body>
 </html>
