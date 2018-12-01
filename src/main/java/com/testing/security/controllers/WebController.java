@@ -1,5 +1,7 @@
 package com.testing.security.controllers;
 
+import com.testing.security.services.FileService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -8,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.ui.Model;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -19,7 +20,8 @@ import java.util.List;
 public class WebController {
     private static final String MODEL_SUCCESS = "success";
     private static final String MODEL_ERROR = "error";
-
+    @Autowired
+    private FileService fileService;
 
     @RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
     public String importParse(@RequestParam("textFile") MultipartFile textFile, Model model) {
@@ -28,21 +30,7 @@ public class WebController {
             return "index.html";
         }
         model.addAttribute(MODEL_SUCCESS, "Successful loading of file.");
-        BufferedReader br;
-        List<String> result = new ArrayList<>();
-        try {
-
-            String line;
-            InputStream is = textFile.getInputStream();
-            br = new BufferedReader(new InputStreamReader(is));
-            while ((line = br.readLine()) != null) {
-                result.add(line);
-                System.out.println(result);
-            }
-
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
+        fileService.readFile(textFile);
         return "index.html";
     }
 }
