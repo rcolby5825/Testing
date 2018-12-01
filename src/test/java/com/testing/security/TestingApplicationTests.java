@@ -1,4 +1,4 @@
-package com.testing.Testing;
+package com.testing.security;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

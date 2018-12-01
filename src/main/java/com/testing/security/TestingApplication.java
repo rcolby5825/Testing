@@ -1,4 +1,4 @@
-package com.testing.Testing;
+package com.testing.security;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
