@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 public class WebController {
     private static final String MODEL_SUCCESS = "success";
     private static final String MODEL_ERROR = "error";
+    private static final String MODEL_TEXT = "text";
     @Autowired
     private FileService fileService;
 
@@ -23,8 +24,14 @@ public class WebController {
             model.addAttribute(MODEL_ERROR, "No file was uploaded.");
             return "index.html";
         }
+        //would need to be altered to work with doc with one hash/line
+        if (!textFile.getOriginalFilename().equals("crackHashes.txt")) {
+            model.addAttribute(MODEL_ERROR, "Upload crackHashes.txt file.");
+            System.out.println(textFile.getOriginalFilename());
+            return "index.html";
+        }
         model.addAttribute(MODEL_SUCCESS, "Successful loading of file.");
-        fileService.readFile(textFile);
+        model.addAttribute(MODEL_TEXT, fileService.readFile(textFile));
         return "index.html";
     }
 }
