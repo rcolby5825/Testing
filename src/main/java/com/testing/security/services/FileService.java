@@ -37,13 +37,14 @@ public class FileService {
         }
         return "error";
     }
+
     private String fnv(BigInteger FNV_128_INIT, byte[] data) {
-        BigInteger hash = FNV_128_INIT;
+        BigInteger newHash = new BigInteger(data);
         for (byte b : data) {
-            hash = hash.multiply(FNV_128_PRIME).mod(FNV_128_INIT);
-            hash = hash.xor(BigInteger.valueOf((int) b & 0xff));
+            newHash.multiply(FNV_128_PRIME).mod(FNV_128_INIT);
+            newHash.xor(BigInteger.valueOf((int) b & 0xff));
         }
-        return hash.toString(16);
+        return newHash.toString(16);
     }
 
 }
