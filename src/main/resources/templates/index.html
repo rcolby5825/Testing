@@ -14,13 +14,16 @@
             <h4 class="success" ><span th:text="${success}"></span></h4>
             <h4 class="error" ><span th:text="${error}"></span></h4>
             <div class="row">
-                <input type="file" name="textFile"  />
+                <div class="form-group">
+                    <label for="textFile">Add File:</label>
+                    <input type="file" class="form-control-file" id="textFile" name="textFile">
+                </div>
             </div>
             <div class="row">
-                <input type="submit" class="btn-default"/>
+                <input type="submit" class="btn btn-info"/>
             </div>
         </form>
     </div>
-
+    <script src="/static/js/jquery.min.js"></script>
 </body>
 </html>
